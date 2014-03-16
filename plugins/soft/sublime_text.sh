@@ -4,7 +4,8 @@
 sublime_text() {
 show_func "Installing Sublime Text 3"
 if [[ "$(sublime_text_test)" = "Installed" ]]; then
-    show_status "Sublime Text 3 already installed"
+		        if [[ "$redownload" = "false" ]]; then
+    	show_status "Sublime Text 3 already installed"
 else
     show_msg "Getting latest version"
     get_file_quiet "http://www.sublimetext.com/3" "sublime.htm"
@@ -34,6 +35,7 @@ StartupNotify=true
 Categories=Development;Utility;TextEditor;
 Keywords=Text;Editor;
 EOF
+fi
 fi
 [[ "$(sublime_text_test)" = "Installed" ]]; exit_state
 }
